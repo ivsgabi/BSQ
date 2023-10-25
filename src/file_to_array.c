@@ -6,6 +6,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <ctype.h>
 #include "fct.h"
 
 char *open_file(char *filename)
@@ -54,23 +55,38 @@ char **alloc_array(char **array, int nb_lines, int nb_cols)
     return (array);
 }
 
+
+
 char **fill_array(char **array, char *str, int nb_lines, int nb_cols) 
 {
     int k = 0;
 
+    while (str[k] != '\0' && str[k] != '\n') {
+        k++;
+    }
+    if (str[k] == '\n') {
+        k++;
+    }
+    
     for (int i = 0; i < nb_lines; i++) {
         for (int j = 0; j < nb_cols; j++) {
             while (str[k] != '\0' && str[k] != '\n') {
-                array[i][j] = str[k];
-                k++;
-                j++;
+                if (isdigit(str[k]) == 0) {
+                    array[i][j] = str[k];
+                    k++;
+                    j++;
+                } else {
+                    k++;
+                    j++;
+                }
             }
             if (str[k] == '\n') {
-                k++; // Ignorer le caractère de nouvelle ligne
+                k++;
             }
         }
         array[i][nb_cols] = '\0';
     }
+
     array[nb_lines] = NULL;
     return array;
 }

@@ -1,13 +1,14 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "fct.h"
 
 int **get_matrix(char **array, int nb_lines, int nb_cols)
 {
-    int **matrix = (int **)malloc(sizeof(int *) * (nb_lines + 1));
+    int **matrix = malloc(sizeof(int *) * (nb_lines));
     
     for (int i = 0; i != nb_lines; i++) {
-        matrix[i] = (int *)malloc(sizeof(int) * (nb_cols));
+        matrix[i] = malloc(sizeof(int) * (nb_cols));
     }
 
     for (int i = 0; array[i] != NULL; i++) {
