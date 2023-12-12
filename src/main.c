@@ -7,7 +7,7 @@ int main(int argc, char **argv)
     char *filename = NULL;
     char *str_map = NULL;
     char **array = NULL;
-    char **result = NULL;
+    //char **result = NULL;
     int nb_lines = 0;
     int nb_cols = 0;
 

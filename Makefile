@@ -1,6 +1,6 @@
 CC		=	gcc
 
-CFLAGS		+=	-Wall -Wextra
+CFLAGS		+=	-g -Wall -Wextra 
 
 CPPFLAGS	+=	-I./include
 
@@ -23,7 +23,7 @@ UT_SRC		=	./tests/test.c  \
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
-	$(CC) -o $(NAME) $(OBJ)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 
 clean:
 	rm -f $(OBJ)
